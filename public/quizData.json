@@ -1,0 +1,72 @@
+[
+    {
+      
+      "question": "Which of the following is a programming language?",
+      "correct_answer": "Python",
+      "incorrect_answers": ["Adobe Illustrator", "Photoshop", "Microsoft Word"],
+      "options": ["Python", "Adobe Illustrator", "Photoshop", "Microsoft Word"]
+    },
+    {
+    
+      "question": "How long is an IPv6 address?",
+      "correct_answer": "128 bits",
+      "incorrect_answers": ["32 bits", "64 bits", "128 bytes"],
+      "options": ["128 bytes", "64 bits", "128 bits", "32 bits"]
+    },
+    {
+      
+      "question": "Which of the following is not a web browser?",
+      "correct_answer": "Photoshop",
+      "incorrect_answers": [ "Chrome","Safari","Firefox"],
+       "options": [ "Chrome", "Safari", "Firefox", "Photoshop"]
+    },
+    {
+     
+      "question": "Which keyword is used for defining a function in most programming languages?",
+      "correct_answer": "def",
+      "incorrect_answers": ["fun", "sub", "function"],
+      "options": ["fun", "def", "sub", "function"]
+    },
+    {
+      
+      "question": "Which programming language is used for developing iOS apps?",
+      "correct_answer": "Swift",
+      "incorrect_answers": ["Java", "C##", "Python"],
+      "options": ["Java", "C##", "Python", "Swift"]
+    },
+    {
+      
+      "question": " Which data structure is used for implementing a Last-In-First-Out (LIFO) behavior?",
+      "correct_answer": "Stack",
+      "incorrect_answers": ["Linked List", "Queue", "Tree"],
+      "options": ["Linked List", "Queue","Stack", "Tree" ]
+    },
+    {
+      
+      "question": "Which of the following is a type of database?",
+      "correct_answer": "All of the above",
+      "incorrect_answers": ["Relational Database", "Object-Oriented Database", "NoSQL Database"],
+      "options": ["Relational Database", "Object-Oriented Database", "NoSQL Database","All of the above"]
+    },
+    {
+      
+      "question": "Which of the following is a type of web development framework?",
+      "correct_answer": "Angular",
+      "incorrect_answers": ["C++", "Python", "SQL"],
+      "options": ["Angular", "C++", "Python", "SQL"]
+    },
+    {
+      
+      "question": "Which of the following is not a data structure?",
+      "correct_answer": "Function",
+      "incorrect_answers": ["Stack", "Queue", "Linked List"],
+      "options": ["Stack", "Queue", "Function", "Linked List"]
+    },
+    {
+      
+      "question": "Which of the following is a commonly used markup language for web development?",
+      "correct_answer": "HTML",
+      "incorrect_answers": ["YAML", "XML", "JSON"],
+      "options": ["YAML", "HTML", "XML", "JSON"]
+    }
+  ]
