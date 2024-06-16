@@ -1,45 +1,63 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Quiz from './Quiz';
+import Header from './Header';
 const Screen = () => {
-  const [quizStarted,SetQuizStarted]=useState(false);
-   const handleStartQuiz=()=>{
-    if (window.confirm('Would you like to enable full-screen mode for the quiz?')) {
-        const elem = document.documentElement;
-        if (elem.requestFullscreen) {
-          elem.requestFullscreen();
-        } else if (elem.mozRequestFullScreen) { 
-          elem.mozRequestFullScreen();
-        } else if (elem.webkitRequestFullscreen) { 
-          elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) { 
-          elem.msRequestFullscreen();
-        }
-        SetQuizStarted(true);
+  const [FullScreen,SetFullScreen]=useState(false);
+  const handleFullScreen=()=>{
+   if(!document.fullscreenElement){
+      document.documentElement.requestFullscreen()
+      .then(()=>SetFullScreen(true))
+      .catch((error)=>console.error('Error in enabling full screen mode'));
+
    }
+   else{
+      document.exitFullscreen()
+      .then(()=>SetFullScreen(false))
+      .catch((error)=>console.error('Error in exiting full screen'));
    }
+
+  }
+
+  useEffect(()=>{
+   const handleFullScreenChange=()=>{
+      SetFullScreen(!!document.fullscreenElement);
+   }
+   document.addEventListener('fullscreenchange',handleFullScreenChange)
+   document.addEventListener('webkitfullscreenchange',handleFullScreenChange)
+   document.addEventListener('mozfullscreenchange', handleFullScreenChange)
+   document.addEventListener('msfullscreenchange', handleFullScreenChange)
+
+   return()=>{
+      document.removeEventListener('fullscreenchange', handleFullScreenChange)
+      document.removeEventListener('webkitfullscreenchange', handleFullScreenChange)
+      document.removeEventListener('mozfullscreenchange', handleFullScreenChange)
+      document.removeEventListener('msfullscreenchange', handleFullScreenChange)
+   }
+
+},[]);
   return (
     
-    <div className="mt-48 h-full flex flex-col gap-4 items-center justify-center">
-    {!quizStarted ? (
-       <>
-          <h1 className="text-text-blue font-karla font-semibold text-3xl md:text-6xl">
-             Quiz App
-          </h1>
-          <p className="text-text-blue font-inter md:text-xl">
+   <main className='w-full h-[100vh]'>
+      <Header/>
+      {FullScreen?<Quiz/> :      
+
+         <div className='w-full h-[calc(100vh-64px)] flex justify-center items-center'>
+         <div className='h- flex gap-10 p-6 flex-col items-center max-w-[400px] w-[90%] text-center rounded-lg'
+            style={{ boxShadow: 'rgb(154, 129, 237) 1px 1px 3px, rgb(154, 129, 237) 1px 1px 3px' }}
+         >
+            <h3 className='font-bold text-3xl'>Start Quiz</h3>
+            <p className="text-blue font-inter md:text-xl">
              Test your knowledge!
           </p>
-          <button
-             onClick={handleStartQuiz}
-             className="text-white bg-blue-600 hover:bg-blue-800 px-6 py-2 mt-4 rounded-md shadow-xl cursor-pointer transition-all hover:opacity-80 active:scale-90 focus:opacity-80 md:text-xl md:px-12 md:py-4 md:rounded-lg"
-          >
-             Start Quiz
-          </button>
-          <p className='text-red-500 text-lg'>Please Enable full screen for taking the quiz!</p>
-       </>
-    ) : (
-       <Quiz />
-    )}
- </div>
+            <button
+               onClick={handleFullScreen}
+               className='bg-blue-500 p-2 rounded-lg text-white font-medium text-lg hover:bg-blue-800 transition-colors duration-300 ease-in-out'>
+               Enter Full Screen Mode
+            </button>
+         </div>
+         </div>
+      }
+ </main>
   )
 }
 
